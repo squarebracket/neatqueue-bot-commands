@@ -1,7 +1,9 @@
 NeatQueue Twitch Chat Commands
 ==============================
 
-This repository has code for bot commands for NeatQueue queues. NeatQueue is the bot used by Pro City, Trick Elite Circuit, and more to manage the queues. The AWS API (code stored in this repo) only really needs to be used for StreamElements/Fossabot, since Nightbot's commands won't time out. If you're here to add commands for your streamer, read what's in [Required Info](#required-info) and then skip to the command for the queue/bot you want.
+This repository has code for bot commands for NeatQueue queues. NeatQueue is the bot used by Pro City, Trick Elite Circuit, and more to manage the queues. The AWS API (code stored in this repo) only really needs to be used for StreamElements/Fossabot, since Nightbot's commands won't time out.
+
+If you're here to add commands for your streamer, read what's in [Required Info](#required-info) and then skip to the command for the queue/bot you want.
 
 - [Required Info](#required-info)
    * [Rank](#rank)
