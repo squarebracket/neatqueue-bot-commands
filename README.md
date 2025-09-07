@@ -149,5 +149,6 @@ Note there are two replacements here
 Here's a reference of the server id and queue id for the queues I know about:
 
 | Queue                          | SERVER_ID           | QUEUE_ID            |
+|--------------------------------|---------------------|---------------------|
 | Pro City                       | 1061301529597976700 | 1404512069318873261 |
 | Tricks Elite Circuit Pro Queue | 1264960696076992634 | 1285984148195905576 |
