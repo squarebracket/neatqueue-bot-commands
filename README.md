@@ -6,6 +6,7 @@ This repository has code for bot commands for NeatQueue queues. NeatQueue is the
 If you're here to add commands for your streamer, read what's in [Required Info](#required-info) and then skip to the command for the queue/bot you want.
 
 - [Required Info](#required-info)
+- [Commands](#commands)
    * [Rank](#rank)
       + [Pro City](#pro-city)
          - [Fossabot](#fossabot)
@@ -27,6 +28,8 @@ If you're here to add commands for your streamer, read what's in [Required Info]
 # Required Info
 
 For these commands, you'll need your streamer's discord ID, which requires your discord having dev options enabled. Open your user settings, click Advanced on the left, and toggle developer mode on. Then right click on your streamer on discord and click "Copy User ID". This is what you'll use to replace `DISCORD_ID` in the commands below. Note that this is **NOT** their @, it is a string of numbers like 695720531856719872.
+
+# Commands
 
 ## Rank
 
