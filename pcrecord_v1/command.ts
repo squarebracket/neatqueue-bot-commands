@@ -110,14 +110,21 @@ export const handler = async (event: Event) => {
     }
   }
 
-  const playerName = (matchHistory[0].teams[0].find(p => p.id === userId) ?? matchHistory[0].teams[1].find(p => p.id === userId)).name;
-  let message = `${playerName}'s record for ${retName} this stream is ${r[0]}W-${r[1]}L`;
-  if (lastMap) {
-    message += ` | Last map (${lastMap}): ${lastWon ? 'Win' : 'Loss'}`;
+  if (!matchHistory[0]) {
+    return {
+      statusCode: 200,
+      body: `Player not found`,
+    };
+  } else {
+    const playerName = (matchHistory[0].teams[0].find(p => p.id === userId) ?? matchHistory[0].teams[1].find(p => p.id === userId)).name;
+    let message = `${playerName}'s record for ${retName} this stream is ${r[0]}W-${r[1]}L`;
+    if (lastMap) {
+      message += ` | Last map (${lastMap}): ${lastWon ? 'Win' : 'Loss'}`;
+    }
+    return {
+      statusCode: 200,
+      body: message,
+    };
   }
-  return {
-    statusCode: 200,
-    body: message,
-  };
 
 };
