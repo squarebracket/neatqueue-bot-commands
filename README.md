@@ -24,6 +24,7 @@ If you're here to add commands for your streamer, read what's in [Required Info]
   * [Record This Stream](#record-this-stream)
 - [Nightbot Exec-Only Commands](#nightbot-exec-only-commands)
 - [ID Reference](#id-reference)
+- [Thanks](#thanks)
 
 # Required Info
 
@@ -208,3 +209,7 @@ Here's a reference of the server id and queue id for the queues I know about:
 | Pro City             | 1061301529597976700 | 1404512069318873261 |
 | Tricks Elite Circuit | 1264960696076992634 | 1285984148195905576 |
 | Tricks Pro Circuit   | 1264960696076992634 | 1413495681624178890 |
+
+# Thanks
+
+Thank you to @sopha_rui on twitch for pointing out NeatQueue has an API, without them this project wouldn't exist.
