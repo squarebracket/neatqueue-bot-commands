@@ -156,7 +156,7 @@ The endpoint is available at https://xaj8txb22l.execute-api.us-east-2.amazonaws.
 The return text is formatted as follows:
 
 ```
-user's pro city rank is xRR (Rank #x on the leaderboard with x wins and x losses for slice)
+user's pro city MMR is xRR (Rank #x on the leaderboard with x wins and x losses for slice)
 ```
 
 If the user is not yet on the leaderboard (i.e. hasn't completed the required # of matches) then the endpoint will return player not found.

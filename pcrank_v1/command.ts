@@ -84,7 +84,7 @@ export const handler = async (event: Event) => {
   const player = lb[k].find(pl => pl.id === userId);
   if (player) {
     const rank = player.data.current_rank;
-    const message = `${player.name}'s ${retName} rank is ${Math.round(player.data.mmr)}RR (Rank ${rank ? '#'+rank : '<none yet>'} on the leaderboard with ${player.data.wins} wins and ${player.data.losses} losses for ${k})`;
+    const message = `${player.name}'s ${retName} MMR is ${Math.round(player.data.mmr)}RR (Rank ${rank ? '#'+rank : '<none yet>'} on the leaderboard with ${player.data.wins} wins and ${player.data.losses} losses for ${k})`;
     const response = {
       statusCode: 200,
       body: message,
