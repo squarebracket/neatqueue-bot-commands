@@ -77,6 +77,12 @@ export const handler = async (event: Event) => {
 
   const regex = /(?:(?<days>\d+) days?)?(?:(?: and)? |\s|,?\s)?(?:(?<hours>\d+) hours?)?(?:(?: and)? |\s|,\s)?(?:(?<minutes>\d+) min(?:ute)?s?)?(?:(?: and)? |\s)?(?:(?<seconds>\d+) sec(?:ond)?s?)?$/;
   const up = regex.exec(uptime);
+  if (up[0] === '') {
+    return {
+      statusCode: 200,
+      body: `stream is offline`
+    };
+  }
   let streamStart = new Date(Date.now());
   streamStart.setUTCDate(streamStart.getUTCDate() - (parseInt(up?.groups?.days ?? '0')));
   streamStart.setUTCHours(streamStart.getUTCHours() - (parseInt(up?.groups?.hours ?? '0')));
