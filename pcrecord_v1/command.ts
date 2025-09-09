@@ -27,6 +27,7 @@ type GameData = {
   guild_id: string;
   game_num: number;
   winner: number;
+  matchdata: MatchMetaData[];
 };
 
 type Player = {
@@ -37,6 +38,8 @@ type Player = {
   mmr_change: number;
   guild_id: string;
 };
+
+type MatchMetaData = [string, [string], string];
 
 const request = <T>(url: string): Promise<T> => {
   let output = '';
@@ -85,22 +88,36 @@ export const handler = async (event: Event) => {
 
   const matchHistory = (await request<MatchHistory>(url)).data;
   const r = [0, 0]; // 0 -> wins, 1 -> losses
+  let lastMap: string;
+  let lastWon: boolean;
   
-  matchHistory
+  const matches = matchHistory
     .filter(m => new Date(`${m.time}Z`) > streamStart)
     .filter(m => m.winner !== null && m.winner > -1)
-    .forEach(m => {
-      const t = m.teams.findIndex(ps => ps.some(p => p.id === userId));
-      const w = m.winner;
-      // increment XOR of player team and winning team
-      r[t^w]++;
+    .sort((a, b) => {
+      return (new Date(a.time)).valueOf() - (new Date(b.time)).valueOf();
     });
 
-  const playerName = (matchHistory[0].teams[0].find(p => p.id === userId) ?? matchHistory[0].teams[1].find(p => p.id === userId)).name;
+  for (let i = 0; i < matches.length; i++) {
+    const match = matches[i];
+    const t = match.teams.findIndex(ps => ps.some(p => p.id === userId));
+    const w = match.winner;
+    // increment XOR of player team and winning team
+    r[t^w]++;
+    if (i === matches.length - 1) {
+      lastWon = !(t^w);
+      lastMap = match.matchdata.find(md => md[0] === 'Map')[1][0];
+    }
+  }
 
+  const playerName = (matchHistory[0].teams[0].find(p => p.id === userId) ?? matchHistory[0].teams[1].find(p => p.id === userId)).name;
+  let message = `${playerName}'s record for ${retName} this stream is ${r[0]}W-${r[1]}L`;
+  if (lastMap) {
+    message += ` | Last map (${lastMap}): ${lastWon ? 'Win' : 'Loss'}`;
+  }
   return {
     statusCode: 200,
-    body: `${playerName}'s record for ${retName} this stream is ${r[0]}W-${r[1]}L`,
+    body: message,
   };
 
 };

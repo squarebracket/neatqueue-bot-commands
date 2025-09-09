@@ -109,7 +109,7 @@ Displays the two teams in the format `Team A: ... | Team B ...`.
 
 ## Record This Stream
 
-Shows the games won and lost on stream since stream started.
+Shows the games won and lost on stream since stream started. Also shows the win/loss result for last map.
 
 ### Pro City
 
