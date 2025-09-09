@@ -171,7 +171,7 @@ The endpoint is available at https://xaj8txb22l.execute-api.us-east-2.amazonaws.
 
 ## Record This Stream
 
-Shows the games won and lost since stream started. Also shows the win/loss result for last map.
+Shows the games won and lost and RR gained/lost since stream started. Also shows the win/loss result for last map.
 
 The endpoint is available at https://xaj8txb22l.execute-api.us-east-2.amazonaws.com/prod/pcrecord/v1 and takes the following query string parameters:  
 `user_id`: _(Required)_ The ID of the discord user  
@@ -181,7 +181,7 @@ The endpoint is available at https://xaj8txb22l.execute-api.us-east-2.amazonaws.
 
 The output format is the following:
 ```
-user's record for pro city this stream is xW-xL | Last map (Haven): Loss
+user's record for pro city this stream is xW-xL (+xRR) | Last map (Haven): Loss
 ```
 
 

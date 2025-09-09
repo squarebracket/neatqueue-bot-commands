@@ -96,6 +96,7 @@ export const handler = async (event: Event) => {
   const r = [0, 0]; // 0 -> wins, 1 -> losses
   let lastMap: string;
   let lastWon: boolean;
+  let mmrChange: number = 0;
   
   const matches = matchHistory
     .filter(m => new Date(`${m.time}Z`) > streamStart)
@@ -110,6 +111,7 @@ export const handler = async (event: Event) => {
     const w = match.winner;
     // increment XOR of player team and winning team
     r[t^w]++;
+    mmrChange += match.teams[t].find(p => p.id === userId).mmr_change;
     if (i === matches.length - 1) {
       lastWon = !(t^w);
       lastMap = match.matchdata.find(md => md[0] === 'Map')[1][0];
@@ -123,7 +125,9 @@ export const handler = async (event: Event) => {
     };
   } else {
     const playerName = (matchHistory[0].teams[0].find(p => p.id === userId) ?? matchHistory[0].teams[1].find(p => p.id === userId)).name;
-    let message = `${playerName}'s record for ${retName} this stream is ${r[0]}W-${r[1]}L`;
+    const roundedMmrChange = Math.round(mmrChange);
+    const mmrString = roundedMmrChange > 0 ? `+${roundedMmrChange}RR` : `${roundedMmrChange}RR`;
+    let message = `${playerName}'s record for ${retName} this stream is ${r[0]}W-${r[1]}L (${mmrString})`;
     if (lastMap) {
       message += ` | Last map (${lastMap}): ${lastWon ? 'Win' : 'Loss'}`;
     }
