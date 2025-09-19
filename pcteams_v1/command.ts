@@ -61,6 +61,13 @@ export const handler = async (event: Event) => {
   const serverId = event.queryStringParameters.server_id;
   const userId = event.queryStringParameters.user_id;
 
+  if (userId === 'DISCORD_ID') {
+    return {
+      statusCode: 200,
+      body: `You forgot to replace DISCORD_ID in the url, please see http://bit.ly/46FNnTj`,
+    };
+  }
+
   const url = `https://host.neatqueue.com/api/matches/${serverId}/`;
 
   const matches = (await request<MatchesResponse>(url));

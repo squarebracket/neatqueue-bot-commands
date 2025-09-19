@@ -75,6 +75,13 @@ export const handler = async (event: Event) => {
   const uptime = event.queryStringParameters.uptime;
   const retName = event.queryStringParameters.server_name ?? 'pro city';
 
+  if (userId === 'DISCORD_ID') {
+    return {
+      statusCode: 200,
+      body: `You forgot to replace DISCORD_ID in the url, please see http://bit.ly/46FNnTj`,
+    };
+  }
+
   const regex = /(?:(?<days>\d+) days?)?(?:(?: and)? |\s|,?\s)?(?:(?<hours>\d+) hours?)?(?:(?: and)? |\s|,\s)?(?:(?<minutes>\d+) min(?:ute)?s?)?(?:(?: and)? |\s)?(?:(?<seconds>\d+) sec(?:ond)?s?)?$/;
   const up = regex.exec(uptime);
   if (up[0] === '') {
