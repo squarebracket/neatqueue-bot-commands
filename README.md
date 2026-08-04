@@ -18,6 +18,10 @@ If you're here to add commands for your streamer, read what's in [Required Info]
     + [Fossabot](#fossabot-2)
     + [Nightbot](#nightbot-2)
     + [StreamElements](#streamelements-2)
+  * [Pro Minds 10s](#pro-minds-10s)
+    + [Fossabot](#fossabot-3)
+    + [Nightbot](#nightbot-3)
+    + [StreamElements](#streamelements-3)
 - [API Reference](#api-reference)
   * [Rank](#rank)
   * [Teams](#teams)
@@ -141,6 +145,34 @@ The pro circuit queue is the one used by tier 2 pros still refining their craft.
 
 **Record This Stream**  
 ```!cmd add !tpcrecord $(touser) $(urlfetch https://xaj8txb22l.execute-api.us-east-2.amazonaws.com/prod/pcrecord/v1?user_id=DISCORD_ID&server_id=1264960696076992634&uptime=$(uptime)&server_name=tricks%20pro%20circuit)```
+
+## Pro Minds 10s
+
+The queues for the [Pro Minds](https://prominds.gg) server.
+
+### Fossabot
+
+**Teams**  
+```!addcom !pmteams $(touser) $(urlfetch https://xaj8txb22l.execute-api.us-east-2.amazonaws.com/prod/pcteams/v1?user_id=DISCORD_ID&server_id=1490527161419829300)```
+
+**Record This Stream**  
+```!addcom !pmrecord $(touser) $(urlfetch https://xaj8txb22l.execute-api.us-east-2.amazonaws.com/prod/pcrecord/v1?user_id=DISCORD_ID&server_id=1490527161419829300&uptime=$(uptime)&server_name=pro%20minds)```
+
+### Nightbot
+
+**Teams**  
+```!addcom !pmteams $(touser) $(urlfetch https://xaj8txb22l.execute-api.us-east-2.amazonaws.com/prod/pcteams/v1?user_id=DISCORD_ID&server_id=1490527161419829300)```
+
+**Record This Stream**  
+```!addcom !pmrecord $(touser) $(urlfetch https://xaj8txb22l.execute-api.us-east-2.amazonaws.com/prod/pcrecord/v1?user_id=DISCORD_ID&server_id=1490527161419829300&uptime=$(twitch $(channel) "{{uptimeLength}}")&server_name=pro%20minds)```
+
+### StreamElements
+
+**Teams**  
+```!cmd add !pmteams $(touser) $(urlfetch https://xaj8txb22l.execute-api.us-east-2.amazonaws.com/prod/pcteams/v1?user_id=DISCORD_ID&server_id=1490527161419829300)```
+
+**Record This Stream**  
+```!cmd add !pmrecord $(touser) $(urlfetch https://xaj8txb22l.execute-api.us-east-2.amazonaws.com/prod/pcrecord/v1?user_id=DISCORD_ID&server_id=1490527161419829300&uptime=$(uptime)&server_name=pro%20minds)```
 
 # API Reference
 
